@@ -39,3 +39,6 @@
 -   ```tail .zsh_history``` - отображение всех выполненных команд которые хранятся в .zsh_history, либо ctrl+R - после -> для реадктирования лбио enter для выполнения, либо `history` $HISTSIZE -  колличество комманд хранимое в history (-c - параметр для очищения history)
 -   ```!400``` - вызвать команду под номером 400
 -   ```!!``` - вызвать предыдущую команду; 
+## Text editor commands
+-   ```nano ~/IdeaProjects/basic_bash/outputFolder/output1.txt``` - nano редактор, упаравление ctrl+Letter
+-   ```vim ~/IdeaProjects/basic_bash/outputFolder/output1.txt``` - vim редактор, два режима comment и insert, переключние на insert - нажать i, выйти escape в comment, :q! -принудительно выйти из файла без записи, :wq - write and quit 
