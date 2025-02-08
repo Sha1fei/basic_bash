@@ -42,3 +42,11 @@
 ## Text editor commands
 -   ```nano ~/IdeaProjects/basic_bash/outputFolder/output1.txt``` - nano редактор, упаравление ctrl+Letter
 -   ```vim ~/IdeaProjects/basic_bash/outputFolder/output1.txt``` - vim редактор, два режима comment и insert, переключние на insert - нажать i, выйти escape в comment, :q! -принудительно выйти из файла без записи, :wq - write and quit 
+## File text Manipulation
+-   ```cut ``` - извлечь колонку из файла `cut -d "," -f2-3 ~/IdeaProjects/basic_bash/outputFolder/output3.txt`, где `-d ","` - делиметр (`-w` аналог `-d " "`), `-f2-3` - указние извлекаемого столбца
+-   ```paste``` - вставить один файл в другой `paste -d "," number.txt state.txt`  c разделителем `,`, `-s` ставка строками
+-   ```tr``` - заменить одни значения сивоал на другие `tr c h` далее выводим заменяемое значение, выход из ввода ctrl+D
+-   ```sort``` - отсортировать извлекаемый столбец по алфавиту, `-n` - отсортировать как числа
+-   ```uniq``` - выводить только уникальные значения, `-c` выводить с подсчитанным количеством дубликатов
+-   ```tee``` - записывает в файл и передает данные дальше `... | tee output4.txt | ...`
+-   ```grep``` - nano редактор, уп
