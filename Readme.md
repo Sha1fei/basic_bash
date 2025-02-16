@@ -86,3 +86,31 @@
 -   ```host google.com``` - ищет по хосту или IP удаленную машину, путем запроса в DNS сервера
 -   ```ping google.com``` - отправляет мелкие пакеты на удаленный сервер, ожидая ответа
 -   ```traceroute google.com``` - выводит путь и время от локальной машины до удаленного хоста
+-   ```ssh-keygen -t rsa``` - генерация публичного ключа
+-   ```ssh -i ~/.ssh/id_rsa -p 2022 valentin@localhost "ls -a"``` - подключение к удаленному порту по ssh; `-i` - указание расположения публичного ключа; `-p` - порт на котором расположен ssh-server c открытым `22` портом; `ls -a` - вполнится не заходя на сервер, вывод будет у клиента в терминале, настройки подключения можно задать в `.ssh/config`
+-   ```scp -P 2022 output.txt valentin@localhost:/home/valentin``` - служит для передачи на удаленный сервер по ssh протоколу
+-   ```sftp -P 2022 valentin@localhost``` - подключение удаленному хосту для ввода команд, для удаления/загрузки удаленных файлов, управление доступами и т.д. `get ...` -скачать файлы, `put` - положить файлы в pwd, `lls` - просмотр фалов локальной машины, `bye` - выход
+## Bash scripting
+-   ```touch testScript.sh``` - создание shell script
+-   ```nano testScript.sh``` - редактирование shell script; внутри `#!/bin/bash` - указание оболочки, которое будет использоваться
+-   ```cat testScript.sh``` - посмотреть изменения скрипта
+-   ```source testScript.sh``` - запуск скрипта, либо можно запустить `./testScript.sh`
+-   ```export PATH=$PATH:$PWD``` - запуск скрипта без указания `source` 
+-   ```value="..."``` - создание переменной со значением `...`, `echo "Value set ${value}"` - вывод переменной; `echo ${value}` - тоже но не внутри строки ".."; `echo ${value3:="Test"}` - c заданием исходного значения;
+-   ```array=(1 2 3)``` - задание массива значений, `echo "${array[0]}"` - вывод значения массива; `echo "${array[@]}"` - вывод всех значений; `echo "${#array[@]}"` - вывод размера массива; `array[0]=5`  - пере присвоить значение массива; `array+=(6 7)` - расширение массива
+-   ```read input``` - считывание в консоли переменной input, для использваония в скрипте
+-   ```value2=~/foo``` - подстановка ${HOME} вместо ~
+-   ```echo "$(ls | head -n1)"``` - команда замены
+-   ```echo "$(( 5 * 3 / 2))"``` - арифметические команды
+-   ```ls Dockerfil*``` - команды подстановки, один или более символов
+-   ```ls Dockerfil?``` - команды подстановки, один символ
+-   ```ls Dockerfil[e,a]``` - команды подстановки из списка, `[a-z]` - один из диапазона символов
+-   ```test -f output.txt``` - полный список условий `man test`, `[[ -f output.txt ]]` - аналог файлов или директорий, `(( 1>10 ))` - аналог для чисел ((...))
+-   ```echo $?``` - проверка статуса выполнения предыдущей команды для `test`
+-   ```if ((value4 > 0)); then echo "Value is positive" else echo "Value is negative" fi``` - условие для скриптов; `elif` - промежуточное условие
+-   ```case "${value5}" in test) echo "value5 is test" ;; test2) echo "value5 is test2" ;; *) echo "value5 is undefined" exit 2 ;; esac``` - switch для скриптов;
+-   ```counter=10 while (( counter > 0 )); do echo "Counter value: ${counter}" ((counter--)) done``` - while для скриптов;
+-   ```counter2=10 while (( counter2 > 0 )); do echo "Counter2 value: ${counter2}" ((counter2--)) done``` - until для скриптов (выполняется пока условие ложно);
+-   ```array=(4 6 7 8 9 10) for (( i=0; i< "${#array[@]}"; i++)); do echo "Index value: ${i}. Array value: ${array[i]}" done``` - цикл for
+-   ```for i in {6..10} ; do echo "Value value: ${i}." done``` - цикл for
+-   ```function foo() { echo "going foo function" echo "$1" echo "$@" echo "$*" index=0 for arg in "$@"; do echo "Index: ${index}. Argument ${arg}" (( index++ )) done return 5 } foo 1 2 echo$?``` - создать функцию foo и вызвать; `$@` - все аргументы функции раздельно; `$*` - все аргументы в одной строке; `echo$?` - вывод return
