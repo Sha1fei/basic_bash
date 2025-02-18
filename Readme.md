@@ -108,7 +108,7 @@
 -   ```test -f output.txt``` - полный список условий `man test`, `[[ -f output.txt ]]` - аналог файлов или директорий, `(( 1>10 ))` - аналог для чисел ((...))
 -   ```echo $?``` - проверка статуса выполнения предыдущей команды для `test`
 -   ```if ((value4 > 0)); then echo "Value is positive" else echo "Value is negative" fi``` - условие для скриптов; `elif` - промежуточное условие
--   ```case "${value5}" in test) echo "value5 is test" ;; test2) echo "value5 is test2" ;; *) echo "value5 is undefined" exit 2 ;; esac``` - switch для скриптов;
+-   ```case "${value5}" in test) echo "value5 is test" ;; test2) echo "value5 is test2" ;; *) echo "value5 is undefined" exit 2 ;; esac``` - switch для скриптов; `$@` - все аргументы вызываемого скрипта раздельно;
 -   ```counter=10 while (( counter > 0 )); do echo "Counter value: ${counter}" ((counter--)) done``` - while для скриптов;
 -   ```counter2=10 while (( counter2 > 0 )); do echo "Counter2 value: ${counter2}" ((counter2--)) done``` - until для скриптов (выполняется пока условие ложно);
 -   ```array=(4 6 7 8 9 10) for (( i=0; i< "${#array[@]}"; i++)); do echo "Index value: ${i}. Array value: ${array[i]}" done``` - цикл for
